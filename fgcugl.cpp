@@ -324,8 +324,6 @@ namespace fgcugl
 	{
 		GLfloat xpos, ypos;
 
-		setColor(color);
-
 		for (int c = 0; c < text.length(); c++)
 		{
 			ypos = y + 8;
@@ -341,7 +339,7 @@ namespace fgcugl
 						{
 							for (GLfloat xs = xpos; xs < xpos + size; xs++)
 							{
-								drawPoint(xs, ys, 1);
+								drawPoint(xs, ys, 1, color);
 							}
 						}
 					}
