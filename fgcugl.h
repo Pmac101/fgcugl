@@ -36,7 +36,7 @@ namespace fgcugl
 		Navy = 0x000080
 	};
 
-	void openWindow(int width, int height, std::string title);
+	void openWindow(int width, int height, std::string title, bool resizable = true);
 	bool windowClosing();
 	void windowPaint();
 	double getTime();

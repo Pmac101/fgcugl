@@ -30,11 +30,23 @@ namespace fgcugl
 	 Returns:
 		void
 	*/
-	void openWindow(int width, int height, std::string title)
+	void openWindow(int width, int height, std::string title, bool resizable)
 	{
 		// inititalize the GLFW
 		if (!glfwInit())
 			return;
+
+
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);	// for macos
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+		if (resizable)
+			glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+		else
+			glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+
 
 		// create a windowed mode and its OpenGL Contect
 		s_window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
