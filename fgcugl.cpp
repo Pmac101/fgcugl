@@ -74,6 +74,11 @@ namespace fgcugl
 		glMatrixMode(GL_MODELVIEW);
 		// same as above
 		glLoadIdentity();
+		
+		// set background to black and clear the screen		
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 	}
 
 	bool windowClosing()
@@ -85,6 +90,8 @@ namespace fgcugl
 	{
 		// swap front and back buffers
 		glfwSwapBuffers(s_window);
+		// clear new buffer after the swap
+		glClear(GL_COLOR_BUFFER_BIT);		
 	}
 
 	double getTime()
