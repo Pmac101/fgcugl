@@ -36,17 +36,133 @@ namespace fgcugl
 		Navy = 0x000080
 	};
 
+	/**
+	 Initialize a new OpenGL window
+	 Parameters:
+		width - width of the window in pixels
+		height - height of the window in pixels
+		title - text to display in window titlebar
+	 Returns:
+		void
+	*/
 	void openWindow(int width, int height, std::string title, bool resizable = true);
+
+	/**
+	 Returns true if the OpenGL window is closing
+	 Returns:
+		bool - true if closing
+	*/
 	bool windowClosing();
+	/**
+	 Performs double buffering of window painting so 
+	 changes are written to one buffer while the other
+	 is being drawn, and swaps the buffers when called.
+	 Returns:
+		void
+	*/
 	void windowPaint();
+
+	/**
+	 Get's current program execution time in best possible precision, 
+	 typically nano or micro seconds
+	 Returns:
+		double	- amount of time since program began execution
+	*/
 	double getTime();
+
+	/**
+	 Returns ASCII charcter code for key pressed. 
+
+	 Can only return 1 key code, order of precedence is:
+		ESC,X,W,S,A,D,UP(W),DOWN(S),LEFT(A),RIGHT(D),NONE
+
+	 Returns:
+		unsigned char - ASCII key code or 0 (null)
+	*/
 	unsigned char getKey();
+
+	/**
+	* Check for system events like keyboard input or window closing
+	 Returns:
+		void
+	*/
 	void getEvents();
+
+	/**
+	* cleanup and exit the OpenGL environment
+	 Returns:
+		void
+	*/
 	void cleanup();
+
+	/**
+	 Draw a 4 sided filled block
+	 Parameters:
+		x		- left side coordinate
+		y		- bottom coordinate
+		width	- in pixels
+		height	- in pixels
+		color	- fill color (default=White)
+	 Returns:
+		void
+	*/
 	void drawQuad(float x, float y, float width, float height, unsigned int color = White);
+
+	/**
+	 Draw a scaled filled point, i.e. 1 or more pixel dot.
+	 Use drawCircle for anything more than 2-3 pixes to get a
+	 smoot circle
+	 Parameters:
+		x		- horizontal center
+		y		- vertical center
+		size	- of point in pixels (default=1)
+		color	- fill color (default=White)
+		smooth	- smooth edges of circle as best as possible (default=true)
+	 Returns:
+		void
+	*/
 	void drawPoint(float x, float y, float size = 1, unsigned int color = White, bool smooth = true);
+
+	/**
+	 Draw a 4 sided filled block
+	 Parameters:
+		x1		- left side coordinate for point 1
+		y1		- bottom coordinate for point 1
+		x2		- left side coordinate for point 2
+		y2		- bottom coordinate for point 2
+		width	- of line in pixels
+		color	- fill color (default=White)
+		smooth	- smooth edges angled lines as best as possible (default=true)
+	 Returns:
+		void
+	*/
 	void drawLine(float x1, float y1, float x2, float y2, float width = 1, unsigned int color = White, bool smooth = true);
+
+	/**
+	 Draw a filled circle made up of a triangle-fan.  360 triangles will
+	 produce a smooth circle.  6 triangles will produce a hexagon.  etc.
+	 Parameters:
+		x		- horizontal center
+		y		- vertical center
+		radius	- of circle in pixels
+		color	- fill color (default=White)
+		sides	- number of triangles drawn (default=360)
+	 Returns:
+		void
+	*/
 	void drawCircle(float x, float y, float radius, unsigned int color = White, int sides = 360);
+
+	/**
+	 Draw 8x8 pixel characters as text on the screen
+	 Parameters:
+		x		- left side of first character
+		y		- bottom of of characters
+		text	- string of characters to draw
+		size	- multiplier for size of characters (default=1), i.e 2=16x16
+		color	- fill color (default=White)
+	 Returns:
+		void
+	*/
 	void drawText(float x, float y, std::string text, int size = 1, unsigned int color = White);
 
 
